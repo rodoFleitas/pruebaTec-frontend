@@ -1,18 +1,13 @@
 import { Switch, Redirect } from "react-router-dom";
 import { PublicRoute } from "./helperRoutes";
 
+//Paginas
+import Login from "../pages/Login";
+
 const PublicRoutes = () => {
   return (
     <Switch>
-      <PublicRoute
-        exact
-        path="/iniciar-sesion"
-        component={() => (
-          <div>
-            <h2>Iniciar sesion</h2>
-          </div>
-        )}
-      />
+      <PublicRoute exact path="/iniciar-sesion" component={() => <Login />} />
       <PublicRoute
         exact
         path="/registrarse"
