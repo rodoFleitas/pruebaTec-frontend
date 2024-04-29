@@ -6,13 +6,12 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import store from "./Redux/Store";
-
-import App from "./App.jsx";
+import AppLayout from "./AppLayout.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <Router>
-      <App />
+      <AppLayout />
     </Router>
   </Provider>
 );
