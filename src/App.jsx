@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 
 import SnackbarCustom from "./components/UI/SnackbarCustom";
 import Spinner from "./components/UI/Spinner";
+import Navigation from "./components/UI/Navigation";
 
 // Routes
 const PublicRoutes = lazy(() => import("./Routes/PublicRoutes"));
@@ -56,10 +57,7 @@ const App = () => {
         </div>
       ) : (
         <Fragment>
-          {!(
-            location.pathname.includes("/iniciar-sesion") ||
-            location.pathname.includes("/registrarse")
-          ) && <div>Nav</div>}
+          {user && <Navigation user={user} />}
 
           <Main>
             <Suspense fallback={<Spinner />}>
