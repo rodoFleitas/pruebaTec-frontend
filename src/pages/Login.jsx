@@ -31,7 +31,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <LoginSignupLayout title="Iniciar Sesión">
+    <LoginSignupLayout title="Iniciar sesión">
       <StyledDiv isLoading={isLoading}>
         <Form
           isLoading={isLoading}
