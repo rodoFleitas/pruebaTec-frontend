@@ -18,9 +18,6 @@ const Main = styled("div")(({ theme }) => ({
   padding: theme.spacing(2),
   marginLeft: 0,
   backgroundColor: "#FAFAFA",
-  [theme.breakpoints.down("800")]: {
-    paddingTop: theme.spacing(4),
-  },
 }));
 
 const useStyles = () => {
