@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import {
   AppBar,
   Avatar,
@@ -40,7 +40,7 @@ const useStyles = (theme) => {
 
       "&:hover": {
         backgroundColor: theme.palette.primary.main,
-        border: "none"
+        border: "none",
       },
     },
   };
@@ -69,48 +69,51 @@ const Navigation = ({ user }) => {
   };
 
   return (
-    <AppBar position="fixed" color="default">
-      <Toolbar style={classes.toolbar}>
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Abrir menu">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar
-                sx={classes.avatar}
-                alt={user.userData.name}
-                src="/static/images/avatar/2.jpg"
-              />
-            </IconButton>
-          </Tooltip>
-          <Menu
-            sx={{ mt: "45px" }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
+    <Fragment>
+      <AppBar position="fixed" color="default">
+        <Toolbar style={classes.toolbar}>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Abrir menu">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  sx={classes.avatar}
+                  alt={user.userData.name}
+                  src="/static/images/avatar/2.jpg"
+                />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={logout}>
+                <Typography textAlign="center">Cerrar sesión</Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <Button
+            sx={classes.addBtn}
+            variant="contained"
+            startIcon={<EditNoteIcon />}
           >
-            <MenuItem onClick={logout}>
-              <Typography textAlign="center">Cerrar sesión</Typography>
-            </MenuItem>
-          </Menu>
-        </Box>
-        <Button
-          sx={classes.addBtn}
-          variant="contained"
-          startIcon={<EditNoteIcon />}
-        >
-          Nueva nota
-        </Button>
-      </Toolbar>
-    </AppBar>
+            Nueva nota
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </Fragment>
   );
 };
 

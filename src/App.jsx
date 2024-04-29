@@ -18,7 +18,7 @@ const Main = styled("div")(({ theme }) => ({
   height: "100%",
   padding: theme.spacing(2),
   marginLeft: 0,
-  backgroundColor: "#FAFAFA",
+  backgroundColor: theme.palette.customColors.backgroundBlack
 }));
 
 const useStyles = () => {
