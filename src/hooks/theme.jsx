@@ -1,4 +1,4 @@
-export const createCustomTheme = (isDark) => {
+export const createCustomTheme = () => {
   return {
     breakpoints: {
       values: {
@@ -12,11 +12,11 @@ export const createCustomTheme = (isDark) => {
       },
     },
     palette: {
-      mode: isDark ? "dark" : "light",
+      mode: "dark",
       primary: {
-        main: isDark ? "#63A4FF" : "#3A7CA5",
-        light: isDark ? "#63A4FF" : "#D5DFE5",
-        dark: isDark ? "#24365c" : "#3A7CA5",
+        main: "#63A4FF",
+        light: "#63A4FF",
+        dark: "#24365c",
       },
       secondary: {
         main: "#818cf8",

@@ -11,6 +11,3 @@ export const DELETE_NOTE = "DELETE_NOTE";
 //Acciones de Snackbar
 export const OPEN_SNACKBAR = "OPEN_SNACKBAR";
 export const CLOSE_SNACKBAR = "CLOSE_SNACKBAR";
-
-//Acciones de tema
-export const SET_THEME = "SET_THEME"

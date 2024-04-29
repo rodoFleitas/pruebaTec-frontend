@@ -1,8 +1,7 @@
 import axios from "axios";
-import { LOG_IN, LOG_OUT, SET_THEME } from "./actionTypes";
+import { LOG_IN, LOG_OUT } from "./actionTypes";
 
 import { setSnackData } from "./snackDataActions";
-import { setTheme } from "./themeActions";
 
 export const logOutUser = () => (dispatch) => {
   localStorage.removeItem(import.meta.env.VITE_LOCALSTORAGE_KEY);
@@ -10,11 +9,6 @@ export const logOutUser = () => (dispatch) => {
   dispatch({
     type: LOG_OUT,
     payload: null,
-  });
-
-  dispatch({
-    type: SET_THEME,
-    payload: false,
   });
 };
 
@@ -67,16 +61,6 @@ export const signIn = (data, setIsLoading) => (dispatch) => {
         import.meta.env.VITE_LOCALSTORAGE_KEY,
         JSON.stringify(res.data.userData)
       );
-
-      let userTheme = JSON.parse(
-        localStorage.getItem(
-          `${import.meta.env.VITE_LOCALSTORAGE_KEY.toLowerCase()}-dark-theme-${
-            res.data.userData.userId
-          }`
-        )
-      );
-
-      dispatch(setTheme(userTheme.dark));
     })
     .catch((err) => {
       if (err.response) {
