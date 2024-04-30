@@ -3,10 +3,6 @@
 # dependencies
 /node_modules
 
-# misc
-config.env
-.env
-
 # testing
 /coverage
 
