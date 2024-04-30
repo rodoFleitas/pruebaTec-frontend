@@ -30,6 +30,7 @@ const NotesPage = ({ user }) => {
         "& .MuiCard-root": {
           overflow: "visible",
         },
+        marginTop: 3,
       }}
       style={{
         padding: 0,
