@@ -16,8 +16,6 @@ export const getNotes = (user, setIsLoading) => (dispatch) => {
         payload: res.data.reverse(),
       });
 
-      console.log(res.data)
-
       if (setIsLoading) setIsLoading(false);
     })
     .catch((err) => {
@@ -35,12 +33,12 @@ export const getNotes = (user, setIsLoading) => (dispatch) => {
 };
 
 export const postNote =
-  (user, formData, setOpen, setIsLoading) => (dispatch, getState) => {
+  (user, data, setOpen, setIsLoading) => (dispatch, getState) => {
     let notesAux = getState().notes.notes;
     let notes = Array.from(notesAux);
 
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/notes`, formData, {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/notes`, data, {
         headers: {
           Authorization: user.token,
         },
@@ -80,20 +78,16 @@ export const postNote =
   };
 
 export const editNote =
-  (user, current, formData, setOpen, setIsLoading) => (dispatch, getState) => {
+  (user, current, data, setOpen, setIsLoading) => (dispatch, getState) => {
     let notesAux = getState().notes.notes;
     let notes = Array.from(notesAux);
 
     axios
-      .put(
-        `${import.meta.env.VITE_BACKEND_URL}/notes/${current._id}`,
-        formData,
-        {
-          headers: {
-            Authorization: user.token,
-          },
-        }
-      )
+      .put(`${import.meta.env.VITE_BACKEND_URL}/notes/${current._id}`, data, {
+        headers: {
+          Authorization: user.token,
+        },
+      })
       .then((res) => {
         let i = notes.findIndex((note) => {
           if (note._id === current._id) {

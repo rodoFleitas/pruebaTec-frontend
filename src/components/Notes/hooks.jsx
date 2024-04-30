@@ -19,3 +19,22 @@ export const getDate = (date, months, shortDate) => {
     return `${day}/${month + 1}/${aux.getFullYear()}`;
   }
 };
+
+export const onChangeData = (setHasChanged, hasChanged) => {
+  if (setHasChanged && hasChanged === false) {
+    setHasChanged(true);
+  }
+};
+
+export const onClickHandler = (
+  action,
+  current,
+  setCurrent,
+  setAction,
+  setOpen
+) => {
+  if (current) setCurrent(current);
+
+  setAction(action);
+  setOpen(true);
+};

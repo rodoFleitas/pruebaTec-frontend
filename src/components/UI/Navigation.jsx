@@ -47,7 +47,7 @@ const useStyles = (theme) => {
   return styles;
 };
 
-const Navigation = ({ user }) => {
+const Navigation = ({ user, setOpen }) => {
   const theme = useTheme();
   const classes = useStyles(theme);
 
@@ -107,6 +107,7 @@ const Navigation = ({ user }) => {
             sx={classes.addBtn}
             variant="contained"
             startIcon={<EditNoteIcon />}
+            onClick={() => setOpen(true)}
           >
             Nueva nota
           </Button>

@@ -36,7 +36,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   },
 }));
 
-const PostCard = ({ isMobile, user, note, onClickHandler }) => {
+const PostCard = ({ isMobile, note, onClickHandler }) => {
   const theme = useTheme();
 
   return (
@@ -46,14 +46,13 @@ const PostCard = ({ isMobile, user, note, onClickHandler }) => {
           <TitleComponent
             note={note}
             isMobile={isMobile}
-            user={user}
             onClickHandler={onClickHandler}
           />
         }
         subheader={
           isMobile
-            ? `${getDate(note.createdAt, months, true)} ${getTime(
-                note.createdAt
+            ? `${getDate(note.updatedAt, months, true)} ${getTime(
+                note.updatedAt
               )}`
             : null
         }

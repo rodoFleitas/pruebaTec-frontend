@@ -8,7 +8,6 @@ import {
   ListItemIcon,
   ListItemText,
   Popover,
-  Tooltip,
   Typography,
 } from "@mui/material";
 
@@ -66,7 +65,7 @@ const useStyles = (theme) => {
   return styles;
 };
 
-const TitleComponent = ({ note, isMobile, user, onClickHandler }) => {
+const TitleComponent = ({ note, isMobile, onClickHandler }) => {
   const theme = useTheme();
   const classes = useStyles(theme);
 
@@ -81,27 +80,15 @@ const TitleComponent = ({ note, isMobile, user, onClickHandler }) => {
   return (
     <div style={classes.titleSection}>
       <div>
-        <Tooltip
-          title={
-            isMobile ? `${user.userData.name} ${user.userData.lastname}` : ""
-          }
-          arrow
-          placement="left"
-        >
-          <Typography variant="body2" sx={classes.title}>
-            {isMobile
-              ? `${user.userData.name.split(" ")[0]} ${
-                  user.userData.lastname.split(" ")[0]
-                }`
-              : `${user.userData.name} ${user.userData.lastname}`}
-          </Typography>
-        </Tooltip>
+        <Typography variant="body2" sx={classes.title}>
+          {note.title !== "" ? note.title : "Sin titulo"}
+        </Typography>
       </div>
       <div style={classes.actionSection}>
         {!isMobile && (
           <Typography variant="body2" sx={classes.date}>
-            {`Publicado el ${getDate(note.createdAt, months, true)} ${getTime(
-              note.createdAt
+            {`Editado el ${getDate(note.updatedAt, months, true)} ${getTime(
+              note.updatedAt
             )}`}
           </Typography>
         )}

@@ -8,6 +8,8 @@ import styled from "@emotion/styled";
 import SnackbarCustom from "./components/UI/SnackbarCustom";
 import Spinner from "./components/UI/Spinner";
 import Navigation from "./components/UI/Navigation";
+import CustomModal from "./components/Shared/Modal";
+import NotesActions from "./components/Notes/NotesActions";
 
 // Routes
 const PublicRoutes = lazy(() => import("./Routes/PublicRoutes"));
@@ -18,7 +20,7 @@ const Main = styled("div")(({ theme }) => ({
   height: "100%",
   padding: theme.spacing(2),
   marginLeft: 0,
-  backgroundColor: theme.palette.customColors.backgroundBlack
+  backgroundColor: theme.palette.customColors.backgroundBlack,
 }));
 
 const useStyles = () => {
@@ -48,6 +50,7 @@ const App = () => {
   const user = useSelector((state) => state.user.userData);
 
   const [isLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <div style={classes.root}>
@@ -57,13 +60,17 @@ const App = () => {
         </div>
       ) : (
         <Fragment>
-          {user && <Navigation user={user} />}
+          {user && <Navigation user={user} setOpen={setOpen} />}
 
           <Main>
             <Suspense fallback={<Spinner />}>
               {!user ? <PublicRoutes /> : <PrivateRoutes user={user} />}
             </Suspense>
           </Main>
+
+          <CustomModal open={open}>
+            <NotesActions user={user} setOpen={setOpen} action={"addNote"} />
+          </CustomModal>
 
           <SnackbarCustom />
         </Fragment>
