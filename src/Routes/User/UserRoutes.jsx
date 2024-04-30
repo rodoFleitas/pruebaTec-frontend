@@ -1,6 +1,7 @@
 import { Redirect, Switch } from "react-router-dom";
 import { PrivateRoute } from "../helperRoutes";
 import { useSelector } from "react-redux";
+import NotesPage from "../../pages/NotesPage";
 
 const UserRoutes = () => {
   const user = useSelector((state) => state.user.userData);
@@ -10,11 +11,7 @@ const UserRoutes = () => {
       <PrivateRoute
         exact
         path="/notas"
-        component={() => (
-          <div>
-            <h2>Notas</h2>
-          </div>
-        )}
+        component={() => <NotesPage user={user} />}
         user={user}
       />
       <Redirect path="/**" to="/notas" />

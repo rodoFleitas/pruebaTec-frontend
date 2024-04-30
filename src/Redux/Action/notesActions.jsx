@@ -16,6 +16,8 @@ export const getNotes = (user, setIsLoading) => (dispatch) => {
         payload: res.data.reverse(),
       });
 
+      console.log(res.data)
+
       if (setIsLoading) setIsLoading(false);
     })
     .catch((err) => {
